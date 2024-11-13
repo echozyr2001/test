@@ -9,11 +9,12 @@ rust:
   - stable
 
 before_install:
-  # 确保安装最新的 Ruby 版本（修复 dpl 安装问题）
-  - rvm install 2.7
-  - rvm use 2.7 --default
-  # 安装兼容的 json_pure 版本（如果需要）
+  # 安装新版本的 Ruby
+  - rvm install 2.7.5
+  - rvm use 2.7.5 --default
+  # 手动安装 json_pure 和 dpl
   - gem install json_pure -v 2.7.6
+  - gem install dpl --pre
 
 before_script:
   - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
@@ -30,7 +31,7 @@ deploy:
   edge: true
   cleanup: false
   github-token: $GITHUB_TOKEN
-  local-dir: ./book/target # 修改为 mdbook 默认生成的输出路径
+  local-dir: ./book/book # 指向 mdbook 默认生成的输出路径
   keep-history: false
   on:
     branch: main
