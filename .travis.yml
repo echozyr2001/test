@@ -1,6 +1,6 @@
 language: rust
 os: linux
-dist: focal
+dist: Noble
 
 cache:
   - cargo
@@ -8,15 +8,15 @@ cache:
 rust:
   - stable
 
-before_install:
-  # 安装 Ruby 3.1 或更高版本
-  - rvm install 3.1.0
-  - rvm use 3.1.0 --default
-  # 升级 bundler 以支持 `uri` 默认 gem
-  - gem update --system
-  - gem install bundler
-  # 安装特定版本的 dpl
-  - gem install dpl -v 2.0.3.beta.4
+# before_install:
+#   # 安装 Ruby 3.1 或更高版本
+#   - rvm install 3.1.0
+#   - rvm use 3.1.0 --default
+#   # 升级 bundler 以支持 `uri` 默认 gem
+#   - gem update --system
+#   - gem install bundler
+#   # 安装特定版本的 dpl
+#   - gem install dpl -v 2.0.3.beta.4
 
 before_script:
   - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
