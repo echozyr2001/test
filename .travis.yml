@@ -1,6 +1,6 @@
 language: rust
 os: linux
-dist: focal # 使用 Ubuntu 20.04，默认包含更高版本的 Ruby
+dist: focal
 
 cache:
   - cargo
@@ -9,10 +9,13 @@ rust:
   - stable
 
 before_install:
-  # 安装更高版本 Ruby（如果 focal 默认未满足要求）
+  # 安装 Ruby 3.1 或更高版本
   - rvm install 3.1.0
   - rvm use 3.1.0 --default
-  # 手动安装特定版本的 dpl
+  # 升级 bundler 以支持 `uri` 默认 gem
+  - gem update --system
+  - gem install bundler
+  # 安装特定版本的 dpl
   - gem install dpl -v 2.0.3.beta.4
 
 before_script:
