@@ -1,5 +1,6 @@
 language: rust
-sudo: false
+os: linux
+dist: xenial
 
 cache:
   - cargo
@@ -18,9 +19,12 @@ script:
 
 deploy:
   provider: pages
-  skip-cleanup: true
+  strategy: git
+  edge: true
+  cleanup: false
   github-token: $GITHUB_TOKEN
   local-dir: ./target # In case of custom book path: path/to/mybook/book
   keep-history: false
   on:
     branch: main
+  target_branch: gh-pages
