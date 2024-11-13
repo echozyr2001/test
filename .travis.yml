@@ -1,6 +1,6 @@
 language: rust
 os: linux
-dist: xenial
+dist: focal # 使用 Ubuntu 20.04，默认包含更高版本的 Ruby
 
 cache:
   - cargo
@@ -9,12 +9,11 @@ rust:
   - stable
 
 before_install:
-  # 安装新版本的 Ruby
-  - rvm install 2.7.5
-  - rvm use 2.7.5 --default
-  # 手动安装 json_pure 和 dpl
-  - gem install json_pure -v 2.7.6
-  - gem install dpl --pre
+  # 安装更高版本 Ruby（如果 focal 默认未满足要求）
+  - rvm install 3.1.0
+  - rvm use 3.1.0 --default
+  # 手动安装特定版本的 dpl
+  - gem install dpl -v 2.0.3.beta.4
 
 before_script:
   - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
@@ -28,7 +27,6 @@ script:
 deploy:
   provider: pages
   strategy: git
-  edge: true
   cleanup: false
   github-token: $GITHUB_TOKEN
   local-dir: ./book/book # 指向 mdbook 默认生成的输出路径
