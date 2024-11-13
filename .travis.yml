@@ -8,6 +8,13 @@ cache:
 rust:
   - stable
 
+before_install:
+  # 确保安装最新的 Ruby 版本（修复 dpl 安装问题）
+  - rvm install 2.7
+  - rvm use 2.7 --default
+  # 安装兼容的 json_pure 版本（如果需要）
+  - gem install json_pure -v 2.7.6
+
 before_script:
   - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
   - (test -x $HOME/.cargo/bin/mdbook || cargo install mdbook)
@@ -15,7 +22,7 @@ before_script:
 
 script:
   - cd ./book
-  - mdbook build # In case of custom book path: mdbook build path/to/mybook && mdbook test path/to/mybook
+  - mdbook build # 如果有自定义路径：mdbook build path/to/mybook && mdbook test path/to/mybook
 
 deploy:
   provider: pages
@@ -23,7 +30,7 @@ deploy:
   edge: true
   cleanup: false
   github-token: $GITHUB_TOKEN
-  local-dir: ./target # In case of custom book path: path/to/mybook/book
+  local-dir: ./book/target # 修改为 mdbook 默认生成的输出路径
   keep-history: false
   on:
     branch: main
