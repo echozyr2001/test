@@ -31,7 +31,7 @@ deploy:
   strategy: git
   cleanup: false
   github-token: $GITHUB_TOKEN
-  local-dir: ./book/book # 指向 mdbook 默认生成的输出路径
+  local-dir: ./target # 指向 mdbook 默认生成的输出路径
   keep-history: false
   on:
     branch: main
