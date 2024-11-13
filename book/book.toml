@@ -1,0 +1,6 @@
+[book]
+language = "en"
+multilingual = false
+
+[build]
+build-dir = "./target"
