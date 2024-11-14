@@ -1,0 +1,86 @@
+/* src: https://github.com/JorelAli/mdBook-pagetoc */
+
+@media only screen and (max-width: 1439px) {
+    .sidetoc {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    main {
+        position: relative;
+    }
+
+    .sidetoc {
+        margin-left: auto;
+        margin-right: auto;
+        left: 102%; /* Slight adjustment for better alignment */
+        position: absolute;
+        font-size: var(--pagetoc-fontsize);
+    }
+
+    .pagetoc {
+        position: fixed;
+        width: var(--pagetoc-width);
+        max-width: 300px; /* Optional: Ensure toc doesn't get too wide */
+        max-height: 90vh; /* Limit height to 90% of the viewport */
+        overflow-y: auto;
+        background: var(--sidebar-bg); /* Soft dark blue-gray */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
+        border-radius: 8px; /* Rounded corners for a modern look */
+        padding: 10px; /* Space around the content */
+    }
+
+    .pagetoc::-webkit-scrollbar {
+        width: 8px; /* Custom scrollbar width */
+    }
+
+    .pagetoc::-webkit-scrollbar-track {
+        background: hsl(210, 15%, 15%); /* Scrollbar track color */
+    }
+
+    .pagetoc::-webkit-scrollbar-thumb {
+        background: hsl(210, 15%, 30%); /* Scrollbar thumb color */
+        border-radius: 4px; /* Rounded scrollbar thumb */
+    }
+
+    .pagetoc::-webkit-scrollbar-thumb:hover {
+        background: hsl(210, 15%, 40%); /* Hover effect for scrollbar thumb */
+    }
+
+    .pagetoc a {
+        display: block;
+        padding: 6px 10px; /* Reduced padding for smaller clickable area */
+        margin: 2px 0; /* Reduced spacing between items */
+        border-left: 3px solid transparent; /* Default border to create a visual indicator */
+        color: hsl(210, 10%, 70%); /* Softer link color */
+        text-align: left;
+        text-decoration: none;
+        font-weight: normal;
+        background: var(--sidebar-bg);
+        transition: all 0.3s ease; /* Smooth hover effects */
+        border-radius: 4px; /* Rounded corners for links */
+        line-height: 1.4; /* Adjust line height for tighter spacing */
+    }
+
+    .pagetoc a:hover {
+        background: hsl(210, 20%, 30%); /* Slightly darker background on hover */
+        color: hsl(210, 15%, 85%); /* Softer hover text color */
+        border-left: 3px solid hsl(210, 20%, 50%); /* Low-saturation hover border */
+        font-weight: bold;
+    }
+
+    .pagetoc a.active {
+        background: hsl(210, 25%, 35%); /* Muted active background */
+        color: hsl(210, 20%, 90%); /* Softer active text color */
+        font-weight: bold;
+        border-left: 3px solid hsl(210, 30%, 50%); /* Subtle active border */
+        font-size: calc(var(--pagetoc-fontsize) + 1px); /* Slightly larger font size */
+        line-height: 1.4; /* Match line-height for active state */
+    }
+
+    .pagetoc a:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 150, 255, 0.3); /* Softer focus ring */
+    }
+}
