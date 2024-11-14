@@ -53,7 +53,7 @@ COPY --from=builder /app/target /app
 WORKDIR /app
 
 # 暴露端口
-EXPOSE 80
+EXPOSE 8080
 
 # 启动 static-web-server
-CMD ["static-web-server", "--port", "80", "--host", "0.0.0.0"]
+CMD ["static-web-server", "--port", "8080", "--host", "0.0.0.0"]
