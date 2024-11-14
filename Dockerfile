@@ -32,7 +32,7 @@ FROM rust:slim AS builder
 WORKDIR /app
 
 # 安装 mdBook 和 static-web-server
-RUN cargo install mdbook static-web-server
+RUN cargo install mdbook static-web-server mdbook-admonish
 
 # 复制项目文件到工作目录
 COPY ./book /app
@@ -48,6 +48,8 @@ COPY --from=builder /usr/local/cargo/bin/static-web-server /usr/local/bin/static
 
 # 复制构建后的静态文件到新镜像
 COPY --from=builder /app/target /app
+
+COPY --from=builder /usr/local/cargo/bin/mdbook-admonish /usr/local/bin/mdbook-admonish
 
 # 设置工作目录
 WORKDIR /app
