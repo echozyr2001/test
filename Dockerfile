@@ -41,7 +41,7 @@ COPY ./book /app
 RUN mdbook build
 
 # 使用新的基础镜像以减小最终镜像体积
-FROM debian:debian:stable-slim
+FROM debian:stable-slim
 
 # 安装 static-web-server（直接使用从 builder 阶段的二进制）
 COPY --from=builder /usr/local/cargo/bin/static-web-server /usr/local/bin/static-web-server
