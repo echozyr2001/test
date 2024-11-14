@@ -56,4 +56,4 @@ WORKDIR /app
 EXPOSE 80
 
 # 启动 static-web-server
-CMD ["static-web-server", "--port", "8080", "--host", "0.0.0.0"]
+CMD ["static-web-server", "--port", "80", "--host", "0.0.0.0"]
