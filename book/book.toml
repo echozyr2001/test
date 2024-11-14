@@ -7,13 +7,21 @@ src = "src"
 [build]
 build-dir = "./target"
 
-[preprocessor]
-
 [preprocessor.admonish]
 command = "mdbook-admonish"
-assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
-
-[output]
+assets_version = "3.0.2"    # do not edit: managed by `mdbook-admonish install`
 
 [output.html]
-additional-css = ["./mdbook-admonish.css"]
+# git-repository-url = ""
+additional-css = ["theme/mdbook-admonish.css", "theme/pagetoc.css"]
+additional-js = ["theme/pagetoc.js"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.playground]
+editable = true
+
+[output.html.print]
+enable = false
