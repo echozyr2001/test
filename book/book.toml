@@ -1,6 +1,8 @@
 [book]
-language = "en"
+authors = ["echozyr2001"]
+language = "zh"
 multilingual = false
+src = "src"
 
 [build]
 build-dir = "./target"
